@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+
+int Etotal(int* number, int r)
+{
+    int o = 0;
+    for (int p = 0; p < r;p++) { o = o + number[p]; }
+    int total = o;
+
+    return total;
+}
+double AVER(int* number, int r)
+{
+    return Etotal(number, r) / r;
+}
+
+
+int main()
+{
+    int r;
+    cout << "총 학생수는 몇명인가요?" << endl;
+    cin >> r;
+    while (r < 0)
+    {
+        cout << "0 보다 높아야 합니다. 다시 입력해 주세요." << endl;
+        cin >> r;
+    }
+    int* number = new int[r];
+
+
+
+    cout << "점수를 적어주세요.  :";
+    for (int i = 0; i < r; i++)
+    {
+        cout << i + 1 << "번째 학생" << endl;
+        cin >> number[i];
+        while (number[i] < 0 || number[i] >100)
+        {
+            cout << "-값 또는 100을 초과 입력할 수 없습니다. 다시 입력해 주세요." << endl;
+            cin >> number[i];
+        }
+    }
+
+    cout << "총합은  :" << Etotal(number, r) << endl;
+    cout << "평균값은  :" << AVER(number, r) << endl;
+
+    delete[] number;
+
+    return 0;
+}

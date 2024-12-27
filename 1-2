@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+void ary(int* number, int z)
+{
+	int b, c, x;
+	for (b = 0; b < z - 1; b++)
+	{
+		for (c = b + 1; c < z; c++)
+		{
+			if (number[b] > number[c])
+			{
+				x = number[b];
+				number[b] = number[c];
+				number[c] = x;
+			}
+		}
+	}
+}
+
+void deary(int* number, int z)
+{
+	int b, c, x;
+	for (b = 0; b < z - 1; b++)
+	{
+		for (c = b + 1; c < z; c++)
+		{
+			if (number[b] < number[c])
+			{
+				x = number[b];
+				number[b] = number[c];
+				number[c] = x;
+
+			}
+		}
+	}
+}
+
+int main()
+{
+	int n, r;
+	cout << "몇개의 숫자를 입력하실건가요?" << endl;
+	cin >> n;
+	int* number = new int[n];
+	int q;
+	for (q = 0; q < n;q++)
+	{
+		cout << q + 1 << " 번째 수를 입력해주세요" << endl;
+		cin >> number[q];
+
+	}
+	cout << "오름차순 정렬을 원하시면 : 1, 내림차순 정렬을 원하시면 : 2" << endl;
+	cin >> r;
+
+	 while (r >= 2 || r < 1)		
+     {
+			cout << "1 또는 2 중에서 선택하여 주십시오." << endl;
+
+			cin >> r;
+		}
+		if (r == 1)
+		{
+			ary(number, n);
+			cout << "오름차순 정렬 : " << endl;
+
+			for (int e = 0; e < n;e++)
+			{
+				cout << number[e] << ",";
+			}
+		}
+		else if (r == 2)
+		{
+			deary(number, n);
+			cout << "내림차순 정렬" << endl;
+
+			for (int e = 0; e < n;e++)
+			{
+				cout << number[e] << ", ";
+			}
+		}
+
+	return 0;
+}
